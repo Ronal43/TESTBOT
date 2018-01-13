@@ -8,8 +8,6 @@ import sys
 import subprocess
 import string
 import re
-import random
-
 
 knownUsers = []  # todo: save these in a file,
 userStep = {}  # so they won't reset every time the bot restarts
@@ -31,7 +29,7 @@ def listener(messages):
             date = datetime.date.today()
             print (str(m.chat.first_name) + " [" + str(m.chat.id) + "]: " + m.text)
             spisok = [str(m.chat.first_name) + " [" + str(m.chat.id) + "]: " + m.text]
-            filename = str(date) + "_" + m.chat.first_name +'.txt'
+            filename = str(date) + "_" + m.chat.first_name +"_" + m.chat.last_name +'.txt'
             spisok2 = open(filename, 'a')
             for index in spisok:
                 spisok2.write(index + '\n')
