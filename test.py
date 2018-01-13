@@ -3,6 +3,7 @@ import telebot, config
 from telebot import types
 import datetime
 from datetime import date
+import time
 import os
 import sys
 import subprocess
@@ -30,7 +31,9 @@ def listener(messages):
         if m.content_type == 'text':
             date = datetime.date.today()
             print (str(m.chat.first_name) + " [" + str(m.chat.id) + "]: " + m.text)
-            spisok = [str(m.chat.first_name) + " [" + str(m.chat.id) + "]: " + m.text]
+            vremya = time.asctime(time.localtime(time.time()))
+            print (vremya)
+            spisok = [str(vremya) + '-' + str(m.chat.first_name) + " [" + str(m.chat.id) + "]: " + m.text]
             filename = str(date) + "_" + m.chat.first_name +'.txt'
             spisok2 = open(filename, 'a')
             for index in spisok:
@@ -55,11 +58,15 @@ def main():
 
 
     @bot.message_handler(func=lambda message: message.text == "КНОПКА")
-    def handle_text(message): 
+    def handle_text(message):
         user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
         user_markup.row('На главную')
         bot.send_message(message.from_user.id, 'Иди ко мне, сладкая...')
-        bot.send_photo(message.from_user.id, open('1408564055_895357073.jpg', 'rb'))
+        kartink = random.choice(os.listdir("/home/makar/rabotayet/Bot_working/test/TESTBOT/kartinki/"))
+        kartinka = "/home/makar/rabotayet/Bot_working/test/TESTBOT/kartinki/" + kartink
+        print (kartink)
+        print (kartinka)
+        bot.send_photo(message.from_user.id, open(kartinka, 'rb'))
         
 
     @bot.message_handler(commands=["help"]) 
