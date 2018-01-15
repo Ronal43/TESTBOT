@@ -219,207 +219,174 @@ def main():
         bot.send_message(message.from_user.id, random.choice(glavn), reply_markup=user_markup)
         bot.send_message(message.chat.id, 'Теперь у меня: \n' +'Mamba.ru: ' + mambaresultat + '\nVk.com: ' + vkresultat + '\nMamba.UA: ' + mambauaresult + '\nvk.com(ua): ' + vkuaresultat, reply_markup=user_markup)
 
-    def lol():
-        @bot.message_handler(func=lambda message: message.text == "Нужна мамба на Киев")
-        def handle_text(message):
-            if mambauaresult == '1' :
-                print('есть одна мамба')
+	
+    @bot.message_handler(func=lambda message: message.text == "Нужна мамба на Киев")
+    def handle_text(message):
+        user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+        user_markup.row('Одна мамба')
+        user_markup.row('Две мамбы')
+        user_markup.row('Три мамбы')
+        user_markup.row('Четыре мамбы')
+        user_markup.row('Пять мамб')
+        user_markup.row('На главную')
+        bot.send_message(message.chat.id, "Сколько нужно?", reply_markup=user_markup)
+        @bot.message_handler(func=lambda message: message.text == "Одна мамба")
+        def command_text_hi(m):
+                uamamba = open('mambaua.txt', 'r+')
+                uaspisok = (uamamba.read())
+                uaaccount = uaspisok.split('\n')
+                print (uaaccount)
+                uamamba.close()
+                mambaua = uaaccount.pop (0)
+                del uaaccount[0]
                 user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-                user_markup.row('Одна мамба')
                 user_markup.row('На главную')
-                bot.send_message(message.chat.id, "Сколько нужно?", reply_markup=user_markup)
-            elif mambauaresult == '2' :
-                print('есть две мамбы')
-                user_markup == telebot.types.ReplyKeyboardMarkup(True, False)
-                user_markup.row('Одна мамба')
-                user_markup.row('Две мамбы')
-                user_markup.row('На главную')
-                bot.send_message(message.chat.id, "Сколько нужно?", reply_markup=user_markup)
-            elif mambauaresult == '3' :
-                print('есть три мамбы')
+                bot.send_message(m.chat.id, 'Держи: \n '+mambaua, reply_markup=user_markup)
+                bot.send_message(m.chat.id, 'Работай хорошо, тогда у тебя всегда будут свежие и красивые аккаунты;)')
+                print (mambaua)
+                print (uaaccount)
+                uamamba = open('mambaua.txt', 'w')
+                for index in uaaccount:
+                      uamamba.write(index + '\n')
+                uamamba.close
+                uamamba = open('mambaua.txt', 'r+')
+                uaspisok = (uamamba.read())
+                uaaccount = uaspisok.split('\n')
+                print (uaaccount)
+                uamamba.close()
+        @bot.message_handler(func=lambda message: message.text == "Две мамбы")
+        def command_text_hi(m):
+                uamamba = open('mambaua.txt', 'r+')
+                uaspisok = (uamamba.read())
+                uaaccount = uaspisok.split('\n')
+                print (uaaccount)
+                uamamba.close()
+                mambaua = uaaccount.pop (0)
+                del uaaccount[0]
+                mambaua1 = uaaccount.pop (0)
+                del uaaccount[0]
                 user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-                user_markup.row('Одна мамба')
-                user_markup.row('Две мамбы')
-                user_markup.row('Три мамбы')
                 user_markup.row('На главную')
-                bot.send_message(message.chat.id, "Сколько нужно?", reply_markup=user_markup)
-            elif mambauaresult == '4' :
-                print('есть Четыре мамбы')
+                bot.send_message(m.chat.id, 'Держи: \n '+mambaua)
+                bot.send_message(m.chat.id, mambaua1, reply_markup=user_markup)
+                print (mambaua)
+                print (mambaua1)
+                print (uaaccount)
+                uamamba = open('mambaua.txt', 'w')
+                for index in uaaccount:
+                      uamamba.write(index + '\n')
+                uamamba.close
+                uamamba = open('mambaua.txt', 'r+')
+                uaspisok = (uamamba.read())
+                uaaccount = uaspisok.split('\n')
+                print (uaaccount)
+                uamamba.close()
+        @bot.message_handler(func=lambda message: message.text == "Три мамбы")
+        def command_text_hi(m):
+                uamamba = open('mambaua.txt', 'r+')
+                uaspisok = (uamamba.read())
+                uaaccount = uaspisok.split('\n')
+                print (uaaccount)
+                uamamba.close()
+                mambaua = uaaccount.pop (0)
+                del uaaccount[0]
+                mambaua1 = uaaccount.pop (0)
+                del uaaccount[0]
+                mambaua2 = uaaccount.pop (0)
+                del uaaccount[0]
                 user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-                user_markup.row('Одна мамба')
-                user_markup.row('Две мамбы')
-                user_markup.row('Три мамбы')
-                user_markup.row('Четыре мамбы')
                 user_markup.row('На главную')
-                bot.send_message(message.chat.id, "Сколько нужно?", reply_markup=user_markup)
-            elif mambauaresult >= '5' :
-                print('есть пять мамб')
+                bot.send_message(m.chat.id, 'Это уже дело)) \n '+mambaua)
+                bot.send_message(m.chat.id, mambaua1)
+                bot.send_message(m.chat.id, mambaua2, reply_markup=user_markup)
+                print (mambaua)
+                print (mambaua1)
+                print (mambaua2)
+                print (uaaccount)
+                uamamba = open('mambaua.txt', 'w')
+                for index in uaaccount:
+                      uamamba.write(index + '\n')
+                uamamba.close
+                uamamba = open('mambaua.txt', 'r+')
+                uaspisok = (uamamba.read())
+                uaaccount = uaspisok.split('\n')
+                print (uaaccount)
+                uamamba.close()
+        @bot.message_handler(func=lambda message: message.text == "Четыре мамбы")
+        def command_text_hi(m):
+                uamamba = open('mambaua.txt', 'r+')
+                uaspisok = (uamamba.read())
+                uaaccount = uaspisok.split('\n')
+                print (uaaccount)
+                uamamba.close()
+                mambaua = uaaccount.pop (0)
+                del uaaccount[0]  
+                mambaua1 = uaaccount.pop (0)
+                del uaaccount[0]
+                mambaua2 = uaaccount.pop (0)
+                del uaaccount[0]
+                mambaua3 = uaaccount.pop (0)
+                del uaaccount[0]
                 user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-                user_markup.row('Одна мамба')
-                user_markup.row('Две мамбы')
-                user_markup.row('Три мамбы')
-                user_markup.row('Четыре мамбы')
-                user_markup.row('Пять мамб')
                 user_markup.row('На главную')
-                bot.send_message(message.chat.id, "Сколько нужно?", reply_markup=user_markup)
-            else:
-                print('мамб нет')
-            @bot.message_handler(func=lambda message: message.text == "Одна мамба")
-            def command_text_hi(m):
-                    uamamba = open('mambaua.txt', 'r+')
-                    uaspisok = (uamamba.read())
-                    uaaccount = uaspisok.split('\n')
-                    print (uaaccount)
-                    uamamba.close()
-                    mambaua = uaaccount.pop (0)
-                    del uaaccount[0]
-                    user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-                    user_markup.row('На главную')
-                    bot.send_message(m.chat.id, 'Держи: \n '+mambaua, reply_markup=user_markup)
-                    bot.send_message(m.chat.id, 'Работай хорошо, тогда у тебя всегда будут свежие и красивые аккаунты;)')
-                    print (mambaua)
-                    print (uaaccount)
-                    uamamba = open('mambaua.txt', 'w')
-                    for index in uaaccount:
-                          uamamba.write(index + '\n')
-                    uamamba.close
-                    uamamba = open('mambaua.txt', 'r+')
-                    uaspisok = (uamamba.read())
-                    uaaccount = uaspisok.split('\n')
-                    print (uaaccount)
-                    uamamba.close()
-            @bot.message_handler(func=lambda message: message.text == "Две мамбы")
-            def command_text_hi(m):
-                    uamamba = open('mambaua.txt', 'r+')
-                    uaspisok = (uamamba.read())
-                    uaaccount = uaspisok.split('\n')
-                    print (uaaccount)
-                    uamamba.close()
-                    mambaua = uaaccount.pop (0)
-                    del uaaccount[0]
-                    mambaua1 = uaaccount.pop (0)
-                    del uaaccount[0]
-                    user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-                    user_markup.row('На главную')
-                    bot.send_message(m.chat.id, 'Держи: \n '+mambaua)
-                    bot.send_message(m.chat.id, mambaua1, reply_markup=user_markup)
-                    print (mambaua)
-                    print (mambaua1)
-                    print (uaaccount)
-                    uamamba = open('mambaua.txt', 'w')
-                    for index in uaaccount:
-                          uamamba.write(index + '\n')
-                    uamamba.close
-                    uamamba = open('mambaua.txt', 'r+')
-                    uaspisok = (uamamba.read())
-                    uaaccount = uaspisok.split('\n')
-                    print (uaaccount)
-                    uamamba.close()
-            @bot.message_handler(func=lambda message: message.text == "Три мамбы")
-            def command_text_hi(m):
-                    uamamba = open('mambaua.txt', 'r+')
-                    uaspisok = (uamamba.read())
-                    uaaccount = uaspisok.split('\n')
-                    print (uaaccount)
-                    uamamba.close()
-                    mambaua = uaaccount.pop (0)
-                    del uaaccount[0]
-                    mambaua1 = uaaccount.pop (0)
-                    del uaaccount[0]
-                    mambaua2 = uaaccount.pop (0)
-                    del uaaccount[0]
-                    user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-                    user_markup.row('На главную')
-                    bot.send_message(m.chat.id, 'Это уже дело)) \n '+mambaua)
-                    bot.send_message(m.chat.id, mambaua1)
-                    bot.send_message(m.chat.id, mambaua2, reply_markup=user_markup)
-                    print (mambaua)
-                    print (mambaua1)
-                    print (mambaua2)
-                    print (uaaccount)
-                    uamamba = open('mambaua.txt', 'w')
-                    for index in uaaccount:
-                          uamamba.write(index + '\n')
-                    uamamba.close
-                    uamamba = open('mambaua.txt', 'r+')
-                    uaspisok = (uamamba.read())
-                    uaaccount = uaspisok.split('\n')
-                    print (uaaccount)
-                    uamamba.close()
-            @bot.message_handler(func=lambda message: message.text == "Четыре мамбы")
-            def command_text_hi(m):
-                    uamamba = open('mambaua.txt', 'r+')
-                    uaspisok = (uamamba.read())
-                    uaaccount = uaspisok.split('\n')
-                    print (uaaccount)
-                    uamamba.close()
-                    mambaua = uaaccount.pop (0)
-                    del uaaccount[0]  
-                    mambaua1 = uaaccount.pop (0)
-                    del uaaccount[0]
-                    mambaua2 = uaaccount.pop (0)
-                    del uaaccount[0]
-                    mambaua3 = uaaccount.pop (0)
-                    del uaaccount[0]
-                    user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-                    user_markup.row('На главную')
-                    bot.send_message(m.chat.id, 'Это сильно)) \n '+mambaua)
-                    bot.send_message(m.chat.id, mambaua1)
-                    bot.send_message(m.chat.id, mambaua2)
-                    bot.send_message(m.chat.id, mambaua3, reply_markup=user_markup)
-                    print (mambaua)
-                    print (mambaua1)
-                    print (mambaua2)
-                    print (mambaua3)
-                    print (uaaccount)
-                    uamamba = open('mambaua.txt', 'w')
-                    for index in uaaccount:
-                          uamamba.write(index + '\n')
-                    uamamba.close
-                    uamamba = open('mambaua.txt', 'r+')
-                    uaspisok = (uamamba.read())
-                    uaaccount = uaspisok.split('\n')
-                    print (uaaccount)
-                    uamamba.close()
-            @bot.message_handler(func=lambda message: message.text == "Пять мамб")
-            def command_text_hi(m):
-                    uamamba = open('mambaua.txt', 'r+')
-                    uaspisok = (uamamba.read())
-                    uaaccount = uaspisok.split('\n')
-                    print (uaaccount)
-                    uamamba.close()
-                    mambaua = uaaccount.pop (0)
-                    del uaaccount[0]  
-                    mambaua1 = uaaccount.pop (0)
-                    del uaaccount[0]
-                    mambaua2 = uaaccount.pop (0)
-                    del uaaccount[0]
-                    mambaua3 = uaaccount.pop (0)
-                    del uaaccount[0]
-                    mambaua4 = uaaccount.pop (0)
-                    del uaaccount[0]
-                    user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-                    user_markup.row('На главную')
-                    bot.send_message(m.chat.id, 'Ну, если ты справишься с ними... \n '+mambaua)
-                    bot.send_message(m.chat.id, mambaua1)
-                    bot.send_message(m.chat.id, mambaua2)
-                    bot.send_message(m.chat.id, mambaua3)
-                    bot.send_message(m.chat.id, mambaua4, reply_markup=user_markup)
-                    print (mambaua)
-                    print (mambaua1)
-                    print (mambaua2)
-                    print (mambaua3)
-                    print (mambaua4)
-                    print (uaaccount)
-                    uamamba = open('mambaua.txt', 'w')
-                    for index in uaaccount:
-                          uamamba.write(index + '\n')
-                    uamamba.close
-                    uamamba = open('mambaua.txt', 'r+')
-                    uaspisok = (uamamba.read())
-                    uaaccount = uaspisok.split('\n')
-                    print (uaaccount)
-                    uamamba.close()
+                bot.send_message(m.chat.id, 'Это сильно)) \n '+mambaua)
+                bot.send_message(m.chat.id, mambaua1)
+                bot.send_message(m.chat.id, mambaua2)
+                bot.send_message(m.chat.id, mambaua3, reply_markup=user_markup)
+                print (mambaua)
+                print (mambaua1)
+                print (mambaua2)
+                print (mambaua3)
+                print (uaaccount)
+                uamamba = open('mambaua.txt', 'w')
+                for index in uaaccount:
+                      uamamba.write(index + '\n')
+                uamamba.close
+                uamamba = open('mambaua.txt', 'r+')
+                uaspisok = (uamamba.read())
+                uaaccount = uaspisok.split('\n')
+                print (uaaccount)
+                uamamba.close()
+        @bot.message_handler(func=lambda message: message.text == "Пять мамб")
+        def command_text_hi(m):
+                uamamba = open('mambaua.txt', 'r+')
+                uaspisok = (uamamba.read())
+                uaaccount = uaspisok.split('\n')
+                print (uaaccount)
+                uamamba.close()
+                mambaua = uaaccount.pop (0)
+                del uaaccount[0]  
+                mambaua1 = uaaccount.pop (0)
+                del uaaccount[0]
+                mambaua2 = uaaccount.pop (0)
+                del uaaccount[0]
+                mambaua3 = uaaccount.pop (0)
+                del uaaccount[0]
+                mambaua4 = uaaccount.pop (0)
+                del uaaccount[0]
+                user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+                user_markup.row('На главную')
+                bot.send_message(m.chat.id, 'Ну, если ты справишься с ними... \n '+mambaua)
+                bot.send_message(m.chat.id, mambaua1)
+                bot.send_message(m.chat.id, mambaua2)
+                bot.send_message(m.chat.id, mambaua3)
+                bot.send_message(m.chat.id, mambaua4, reply_markup=user_markup)
+                print (mambaua)
+                print (mambaua1)
+                print (mambaua2)
+                print (mambaua3)
+                print (mambaua4)
+                print (uaaccount)
+                uamamba = open('mambaua.txt', 'w')
+                for index in uaaccount:
+                      uamamba.write(index + '\n')
+                uamamba.close
+                uamamba = open('mambaua.txt', 'r+')
+                uaspisok = (uamamba.read())
+                uaaccount = uaspisok.split('\n')
+                print (uaaccount)
+                uamamba.close()
+	
 	
     @bot.message_handler(func=lambda message: message.text == "Получить вк Киев") 
     def handle_text(message):
