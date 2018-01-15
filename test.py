@@ -220,16 +220,50 @@ def main():
         bot.send_message(message.chat.id, 'Теперь у меня: \n' +'Mamba.ru: ' + mambaresultat + '\nVk.com: ' + vkresultat + '\nMamba.UA: ' + mambauaresult + '\nvk.com(ua): ' + vkuaresultat, reply_markup=user_markup)
 
 	
-    @bot.message_handler(func=lambda message: message.text == "Нужна мамба на Киев")
+  	@bot.message_handler(func=lambda message: message.text == "Нужна мамба на Киев")
     def handle_text(message):
-        user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-        user_markup.row('Одна мамба')
-        user_markup.row('Две мамбы')
-        user_markup.row('Три мамбы')
-        user_markup.row('Четыре мамбы')
-        user_markup.row('Пять мамб')
-        user_markup.row('На главную')
-        bot.send_message(message.chat.id, "Сколько нужно?", reply_markup=user_markup)
+		if mambauaresult = '1' :
+			print('есть одна мамба')
+			user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+			user_markup.row('Одна мамба')
+			user_markup.row('На главную')
+			bot.send_message(message.chat.id, "Сколько нужно?", reply_markup=user_markup)
+		elif mambauaresult = '2' :
+			print('есть две мамбы')
+			user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+			user_markup.row('Одна мамба')
+			user_markup.row('Две мамбы')
+			user_markup.row('На главную')
+			bot.send_message(message.chat.id, "Сколько нужно?", reply_markup=user_markup)
+		elif mambauaresult = '3' :
+			print('есть три мамбы')
+			user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+			user_markup.row('Одна мамба')
+			user_markup.row('Две мамбы')
+			user_markup.row('Три мамбы')
+			user_markup.row('На главную')
+			bot.send_message(message.chat.id, "Сколько нужно?", reply_markup=user_markup)
+		elif mambauaresult = '4' :
+			print('есть Четыре мамбы')
+			user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+			user_markup.row('Одна мамба')
+			user_markup.row('Две мамбы')
+			user_markup.row('Три мамбы')
+			user_markup.row('Четыре мамбы')
+			user_markup.row('На главную')
+			bot.send_message(message.chat.id, "Сколько нужно?", reply_markup=user_markup)
+		elif mambauaresult >= '5' :
+			print('есть пять мамб')
+			user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+			user_markup.row('Одна мамба')
+			user_markup.row('Две мамбы')
+			user_markup.row('Три мамбы')
+			user_markup.row('Четыре мамбы')
+			user_markup.row('Пять мамб')
+			user_markup.row('На главную')
+			bot.send_message(message.chat.id, "Сколько нужно?", reply_markup=user_markup)
+		else:
+			print('мамб нет')
         @bot.message_handler(func=lambda message: message.text == "Одна мамба")
         def command_text_hi(m):
                 uamamba = open('mambaua.txt', 'r+')
@@ -386,7 +420,6 @@ def main():
                 uaaccount = uaspisok.split('\n')
                 print (uaaccount)
                 uamamba.close()
-	
 	
     @bot.message_handler(func=lambda message: message.text == "Получить вк Киев") 
     def handle_text(message):
