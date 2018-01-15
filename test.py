@@ -219,7 +219,7 @@ def main():
         bot.send_message(message.from_user.id, random.choice(glavn), reply_markup=user_markup)
         bot.send_message(message.chat.id, 'Теперь у меня: \n' +'Mamba.ru: ' + mambaresultat + '\nVk.com: ' + vkresultat + '\nMamba.UA: ' + mambauaresult + '\nvk.com(ua): ' + vkuaresultat, reply_markup=user_markup)
 
-	
+    def lol():
         @bot.message_handler(func=lambda message: message.text == "Нужна мамба на Киев")
         def handle_text(message):
             if mambauaresult == '1' :
