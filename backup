@@ -36,7 +36,7 @@ def listener(messages):
             print (vremya)
             spisok = [str(vremya) + '-' + str(m.chat.first_name) + " [" + str(m.chat.id) + "]: " + m.text]
             filename = str(date) + "_" + m.chat.first_name +'.txt'
-            spisok2 = open(filename, 'a')
+            spisok2 = open("/home/makar/rabotayet/Bot_working/logs/" + filename, 'a')
             for index in spisok:
                 spisok2.write(index + '\n')
             spisok2.close
@@ -54,8 +54,10 @@ def main():
         user_markup.row('Получить вк Киев')
         user_markup.row('Получить мамбу МСК') 
         user_markup.row('Получить вк МСК')
+        user_markup.row('Сколько есть?')
         user_markup.row('КНОПКА')
-        bot.send_message(message.from_user.id, 'Что привело тебя в столь темное место, красавица?', reply_markup=user_markup)
+        priv = ()
+        bot.send_message(message.from_user.id, random.choice(priv), reply_markup=user_markup)
 
 
     @bot.message_handler(func=lambda message: message.text == "КНОПКА")
@@ -739,20 +741,23 @@ def main():
 			  
     @bot.message_handler(func=lambda message: message.text == "Сколько есть?") 
     def proverka(m):    
-        f1 = open('mambaorig.txt', 'r+')
-        f = open('mamba.txt', 'r+')
-        s = (f.read())
-        a = s.split('\n')
-        s1 = (f1.read())
-        a1 = s1.split('\n')
-        print (a)
-        print (a1)
-        f.close()
-        f1.close()
-        a.extend(a1)
-        print (a)
-        c = Counter(2)
-        print (c[2])
+            user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+            user_markup.row('На главную')
+            orig_mamba = open('mambaorig.txt', 'r+')
+            rab_mamba = open('mamba.txt', 'r+')
+            mamba_list = (rab_mamba.read())
+            mambalist = mamba_list.split('\n')
+            mambishche = [x for x in mambalist if x != '']
+            print (mambishche)
+            omambalist = (orig_mamba.read())
+            omamba_list = omambalist.split('\n')
+            result = []
+            for index in mambishche:
+                if index in omamba_list:
+                    result.append(index)
+            print(len(result))
+            resultmamba = str(len(result))
+            bot.send_message(m.chat.id, 'Mamba.ru: ' + resultmamba, reply_markup=user_markup)
 
 
     if __name__=="__main__":

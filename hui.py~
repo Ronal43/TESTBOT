@@ -1,0 +1,20 @@
+def main() :
+    def proverka(m):    
+            f1 = open('mambaorig.txt', 'r+')
+            f = open('mamba.txt', 'r+')
+            s = (f.read())
+            a = s.split('\n')
+            aishche = [x for x in a if x != '']
+            s1 = (f1.read())
+            a1 = s1.split('\n')
+            aishche1 = [x for x in a1 is x != '']
+            print (aishche)
+            print (aishche1)
+            result = []
+            for index in aishche:
+                if index in aishche1:
+                    result.append(i)
+            print(len(result))
+
+if __name__=="__main__":
+        main()
