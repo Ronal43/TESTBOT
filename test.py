@@ -50,19 +50,14 @@ def main():
     @bot.message_handler(commands=["start"])
     def handle_text(message): 
         user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-        user_markup.row('Сколько есть?')
-        user_markup.row('Нужна мамба на Киев') 
-        user_markup.row('Получить вк Киев')
-        user_markup.row('Получить мамбу МСК') 
-        user_markup.row('Получить вк МСК')
-        user_markup.row('КНОПКА')
         priv = ('Привет;)', 'Давай работать, что-ли?:Р', 'Хочешь аккаунтов?)', 'Мамбы, вк!! Легко и просто!!!', 'Нажми на кно... Хотя нет, не нажим... Жми, короче, я согласен...Может...', 'Давай нажимать кнопочки и ломать меня))', 'Люблю, когда нажимают кнопочки))', 'Надоели хачики? Попроси картиночку!!')
         #orig_mamba = open('mambaorig.txt', 'r+')
         rab_mamba = open('mamba.txt', 'r+')
         mamba_list = (rab_mamba.read())
         mambalist = mamba_list.split('\n')
         mambishche = [x for x in mambalist if x != '']
-        mambaresultat = print(str(len(mambishche)))
+        mambaresultat = str(len(mambishche))
+        print(mambaresultat)
         #omambalist = (orig_mamba.read())
         #omamba_list = omambalist.split('\n')
         #result = []
@@ -77,7 +72,8 @@ def main():
         vk_list = (rab_vk.read())
         vklist = vk_list.split('\n')
         vk_proverka = [x for x in vklist if x != '']
-        vkresultat = print(str(len(vk_proverka)))
+        vkresultat = str(len(vk_proverka))
+        print(vkresultat)
         #ovk_list = (orig_vk.read())
         #ovklist = ovk_list.split('\n')
         #vkresult = []
@@ -93,7 +89,8 @@ def main():
         mamba_list_ua = (rab_mamba_ua.read())
         mambalist_ua = mamba_list_ua.split('\n')
         mambishche_ua = [x for x in mambalist_ua if x != '']
-        mambauaresult = print(str(len(mambishche_ua)))
+        mambauaresult = str(len(mambishche_ua))
+        print(mambauaresult)
         #omambalist_ua = (orig_mamba_ua.read())
         #omamba_list_ua = omambalist_ua.split('\n')
         #mamba_ua_result = []
@@ -108,7 +105,8 @@ def main():
         vk_list_ua = (rab_vkua.read())
         vklist_ua = vk_list_ua.split('\n')
         vk_proverka_ua = [x for x in vklist_ua if x != '']
-        vkuaresultat = print(str(len(vk_proverka_ua)))
+        vkuaresultat = str(len(vk_proverka_ua))
+        print(vkuaresultat)
         #ovk_list_ua = (orig_vkua.read())
         #ovklist_ua = ovk_list_ua.split('\n')
         #vkresult_ua = []
@@ -117,8 +115,14 @@ def main():
         #        vkresult_ua.append(index)
         #print(len(vkresult_ua))
         #vkuaresultat = str(len(vkresult_ua))
+        user_markup.row('Нужна мамба на Киев') 
+        user_markup.row('Получить вк Киев')
+        user_markup.row('Получить мамбу МСК') 
+        user_markup.row('Получить вк МСК')
+        user_markup.row('КНОПКА')
         bot.send_message(message.from_user.id, random.choice(priv), reply_markup=user_markup)
-        bot.send_message(message.chat.id, 'У меня есть в наличии много вкусностей:)\n' + 'Mamba.ru: ' + mambaresultat + '\nVk.com: ' + vkresultat + '\nMamba.UA: ' + mambauaresult + '\nvk.com(ua): ' + vkuaresultat, reply_markup=user_markup)
+        bot.send_message(message.chat.id, 'У меня есть в наличии много вкусностей:)\n')
+        bot.send_message(message.chat.id, 'Mamba.ru: ' + mambaresultat + '\nVk.com: ' + vkresultat + '\nMamba.UA: ' + mambauaresult + '\nvk.com(ua): ' + vkuaresultat)
 
 
 
@@ -127,8 +131,8 @@ def main():
         user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
         user_markup.row('На главную')
         bot.send_message(message.from_user.id, 'Иди ко мне, сладкая...')
-        kartink = random.choice(os.listdir("/home/makar/rabotayet/Bot_working/test/TESTBOT/kartinki/"))
-        kartinka = "/home/makar/rabotayet/Bot_working/test/TESTBOT/kartinki/" + kartink
+        kartink = random.choice(os.listdir("/home/makar/rabotayet/Bot_working/kartinki/"))
+        kartinka = "/home/makar/rabotayet/Bot_working/kartinki/" + kartink
         print (kartink)
         print (kartinka)
         bot.send_photo(message.from_user.id, open(kartinka, 'rb'))
@@ -136,24 +140,19 @@ def main():
 
     @bot.message_handler(commands=["help"]) 
     def start(message):
-        bot.send_message(message.chat.id, 'Попросите у меня Вк, и я дам его вам, попросите Мамбу, и я тоже ее вам дам.\nНо не просите у меня кушать:)(все, кто попросит - покушают пиздюлей)')
-
+        bot.send_message(message.chat.id, '')
 
 
     @bot.message_handler(func=lambda message: message.text == "На главную")
     def handle_text(message): 
         user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-        user_markup.row('Нужна мамба на Киев') 
-        user_markup.row('Получить вк Киев')
-        user_markup.row('Получить мамбу МСК') 
-        user_markup.row('Получить вк МСК')
-        user_markup.row('КНОПКА')
         #orig_mamba = open('mambaorig.txt', 'r+')
         rab_mamba = open('mamba.txt', 'r+')
         mamba_list = (rab_mamba.read())
         mambalist = mamba_list.split('\n')
         mambishche = [x for x in mambalist if x != '']
-        mambaresultat = print (str(len(mambishche)))
+        mambaresultat = str(len(mambishche))
+        print(mambaresultat)
         #omambalist = (orig_mamba.read())
         #omamba_list = omambalist.split('\n')
         #result = []
@@ -168,7 +167,8 @@ def main():
         vk_list = (rab_vk.read())
         vklist = vk_list.split('\n')
         vk_proverka = [x for x in vklist if x != '']
-        vkresultat = print(str(len(vk_proverka)))
+        vkresultat = str(len(vk_proverka))
+        print(vkresultat)
         #ovk_list = (orig_vk.read())
         #ovklist = ovk_list.split('\n')
         #vkresult = []
@@ -184,7 +184,8 @@ def main():
         mamba_list_ua = (rab_mamba_ua.read())
         mambalist_ua = mamba_list_ua.split('\n')
         mambishche_ua = [x for x in mambalist_ua if x != '']
-        mambauaresult = print(str(len(mambishche_ua)))
+        mambauaresult = str(len(mambishche_ua))
+        print(mambauaresult)
         #omambalist_ua = (orig_mamba_ua.read())
         #omamba_list_ua = omambalist_ua.split('\n')
         #mamba_ua_result = []
@@ -199,7 +200,8 @@ def main():
         vk_list_ua = (rab_vkua.read())
         vklist_ua = vk_list_ua.split('\n')
         vk_proverka_ua = [x for x in vklist_ua if x != '']
-        vkuaresultat = print(str(len(vk_proverka_ua)))
+        vkuaresultat = str(len(vk_proverka_ua))
+        print(vkuaresultat)
         #ovk_list_ua = (orig_vkua.read())
         #ovklist_ua = ovk_list_ua.split('\n')
         #vkresult_ua = []
@@ -208,6 +210,11 @@ def main():
         #        vkresult_ua.append(index)
         #print(len(vkresult_ua))
         #vkuaresultat = str(len(vkresult_ua))
+        user_markup.row('Нужна мамба на Киев') 
+        user_markup.row('Получить вк Киев')
+        user_markup.row('Получить мамбу МСК') 
+        user_markup.row('Получить вк МСК')
+        user_markup.row('КНОПКА')
         glavn = ('Опять мы тут, продолжим же)', 'Что-нибудь еще?', 'Продолжаем.', 'Ну, что еще?','Меня разорили...','Я снова потерял часть себя:(','Желаете еще чего-нибудь?')
         bot.send_message(message.from_user.id, random.choice(glavn), reply_markup=user_markup)
         bot.send_message(message.chat.id, 'Теперь у меня: \n' +'Mamba.ru: ' + mambaresultat + '\nVk.com: ' + vkresultat + '\nMamba.UA: ' + mambauaresult + '\nvk.com(ua): ' + vkuaresultat, reply_markup=user_markup)
