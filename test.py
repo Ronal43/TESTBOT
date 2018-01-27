@@ -2192,6 +2192,7 @@ def main():
                 print (vkmsk_list)
                 vkmsk.close()
                 vkmsk_list.clear()
+                m.text = None
                 #svkmsk.clear()
                 #m.text.clear()
         @bot.message_handler(func=lambda message: message.text == "Залить мамбы на Киев")
@@ -2204,7 +2205,7 @@ def main():
                 bot.reply_to(m, 'Принятo: \n' + m.text)
                 uamamba = open('mambaua.txt', 'r+')
                 uaspisok = (uamamba.read())
-                #m.text.split('\n')
+                m.text.split('\n')
                 uaaccount = uaspisok.split('\n')
                 uaaccount.append(m.text)
                 uaaccount.pop (0)
@@ -2221,8 +2222,9 @@ def main():
                 print (uaaccount)
                 uamamba.close()
                 uaspisok.clear()
-                uaaccount.clear()
-                m.text.clear()
+                m.text = None
+                #uaaccount.clear()
+               # m.text.clear()
         @bot.message_handler(func=lambda message: message.text == "Залить вк Киев")
         def command_text_hi(m):
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
@@ -2234,9 +2236,9 @@ def main():
                 vkkiev = open('vkkiev.txt', 'r+')
                 svkkiev = (vkkiev.read())
                 #m.text.split('\n')
-                vkkiev_list = vkkiev.split('\n')
+                vkkiev_list = svkkiev.split('\n')
                 vkkiev_list.append(m.text)
-                vkkiev_list.pop (0)
+                #vkkiev_list.pop (0)
                 print(vkkiev_list)
                 vkkiev = open('vkkiev.txt', 'w')
                 for index in vkkiev_list:
@@ -2248,8 +2250,9 @@ def main():
                 print (vkkiev_list)
                 vkkiev.close()
                 vkkiev_list.clear()
-                svkkiev.clear()
-                m.text.clear()                                                                                                                              
+                m.text = None
+                #svkkiev.clear()
+                #m.text.clear()                                                                                                                              
     if __name__=="__main__":
         bot.polling()
 
