@@ -36,7 +36,7 @@ def listener(messages):
             print (vremya)
             spisok = [str(vremya) + '-' + str(m.chat.first_name) + " [" + str(m.chat.id) + "]: " + m.text]
             filename = str(date) + "_" + m.chat.first_name +'.txt'
-            spisok2 = open("/home/makar/rabotayet/Bot_working/logs/" + filename, 'a')
+            spisok2 = open("/home/makar/rabotayet/bot_logs/" + filename, 'a')
             for index in spisok:
                 spisok2.write(index + '\n')
             spisok2.close
@@ -120,6 +120,7 @@ def main():
         user_markup.row('Получить мамбу МСК') 
         user_markup.row('Получить вк МСК')
         user_markup.row('КНОПКА')
+        user_markup.row('Залить аккаунты')
         bot.send_message(message.from_user.id, random.choice(priv), reply_markup=user_markup)
         bot.send_message(message.chat.id, 'У меня есть в наличии много вкусностей:)\n')
         bot.send_message(message.chat.id, 'Mamba.ru: ' + mambaresultat + '\nVk.com: ' + vkresultat + '\nMamba.UA: ' + mambauaresult + '\nvk.com(ua): ' + vkuaresultat)
@@ -2130,7 +2131,51 @@ def main():
                   vkmsk_list = svkmsk.split('\n')
                   print (vkmsk_list)
                   vkmsk.close()
-			  
+    @bot.message_handler(func=lambda message: message.text == "Залить аккаунты")
+    def handle_text(message): 
+        user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+        rab_mamba = open('mamba.txt', 'r+')
+        mamba_list = (rab_mamba.read())
+        mambalist = mamba_list.split('\n')
+        mambishche = [x for x in mambalist if x != '']
+        mambaresultat = str(len(mambishche))
+        print(mambaresultat)
+        rab_vk = open('vk.txt', 'r+')
+        vk_list = (rab_vk.read())
+        vklist = vk_list.split('\n')
+        vk_proverka = [x for x in vklist if x != '']
+        vkresultat = str(len(vk_proverka))
+        print(vkresultat)
+        rab_mamba_ua = open('mambaua.txt', 'r+')
+        mamba_list_ua = (rab_mamba_ua.read())
+        mambalist_ua = mamba_list_ua.split('\n')
+        mambishche_ua = [x for x in mambalist_ua if x != '']
+        mambauaresult = str(len(mambishche_ua))
+        print(mambauaresult)
+        rab_vkua = open('vkkiev.txt', 'r+')
+        vk_list_ua = (rab_vkua.read())
+        vklist_ua = vk_list_ua.split('\n')
+        vk_proverka_ua = [x for x in vklist_ua if x != '']
+        vkuaresultat = str(len(vk_proverka_ua))
+        print(vkuaresultat)
+        user_markup.row('Залить мамбы на Киев') 
+        user_markup.row('Залить вк Киев')
+        user_markup.row('Добавить мамбу МСК') 
+        user_markup.row('Вкинуть вк МСК')
+        glavn = ('Что добавляем?')
+        bot.send_message(message.from_user.id, glavn, reply_markup=user_markup)
+        bot.send_message(message.chat.id, 'Сейчас у меня: \n' +'  Mamba.ru: ' + mambaresultat + '\n  Vk.com: ' + vkresultat + '\n  Mamba.UA: ' + mambauaresult + '\n  vk.com(ua): ' + vkuaresultat, reply_markup=user_markup)
+        @bot.message_handler(func=lambda message: message.text == "Вкинуть вк МСК")
+            def command_text_hi(m):
+                  bot.send_message(m.chat.id, 'Жду...')
+                  def Accslist(m):
+                      accs = message.text
+                      bot.reply_to(m, 'Принято')
+                      vkmsk_list.clear()
+                      vkmsk = open('vk.txt', 'r+')
+                      svkmsk = (vkmsk.read())
+                      vkmsk_list = svkmsk.split('\n')
+                      vkmsk_list_add = vkmsk_list.extend(accs)
 
     if __name__=="__main__":
         bot.polling()
