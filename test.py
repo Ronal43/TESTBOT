@@ -2252,7 +2252,37 @@ def main():
                 vkkiev_list.clear()
                 m.text = None
                 #svkkiev.clear()
-                #m.text.clear()                                                                                                                              
+                #m.text.clear()  
+        @bot.message_handler(func=lambda message: message.text == "Добавить мамбу МСК")
+        def command_text_hi(m):
+            user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+            user_markup.row('На главную')
+            bot.send_message(m.chat.id, 'Жду...', reply_markup=user_markup)
+            @bot.message_handler(func=lambda m: True, content_types=['text'])
+            def Accslistmamka(m):
+                bot.reply_to(m, 'Принятo: \n' + m.text)
+                f = open('mamba.txt', 'r+')
+                s = (f.read())
+                m.text.split('\n')
+                a = s.split('\n')
+                a.append(m.text)
+                a.pop (0)
+                print(a)
+                #vkmsk_list_add = vkmsk_list.append(m.text)
+                #print(vkmsk_list_add)
+                f = open('mamba.txt', 'w')
+                for index in a:
+                        f.write(index + '\n')
+                f.close
+                f = open('mamba.txt', 'r+')
+                s = (f.read())
+                a = s.split('\n')
+                print (a)
+                f.close()
+                s.clear()
+                m.text = None
+                #uaaccount.clear()
+                #m.text.clear()                
     if __name__=="__main__":
         bot.polling()
 
