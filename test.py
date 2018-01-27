@@ -2171,7 +2171,7 @@ def main():
             user_markup.row('На главную')
             bot.send_message(m.chat.id, 'Жду...', reply_markup=user_markup)
             @bot.message_handler(func=lambda m: True, content_types=['text'])
-            def Accslist(m):
+            def Accslistvkmsk(m):
                 bot.reply_to(m, 'Принятo: \n' + m.text)
                 vkmsk = open('vk.txt', 'r+')
                 svkmsk = (vkmsk.read())
@@ -2200,7 +2200,7 @@ def main():
             user_markup.row('На главную')
             bot.send_message(m.chat.id, 'Жду...', reply_markup=user_markup)
             @bot.message_handler(func=lambda m: True, content_types=['text'])
-            def Accslist(m):
+            def Accslistmamka(m):
                 bot.reply_to(m, 'Принятo: \n' + m.text)
                 uamamba = open('mambaua.txt', 'r+')
                 uaspisok = (uamamba.read())
@@ -2229,7 +2229,7 @@ def main():
             user_markup.row('На главную')
             bot.send_message(m.chat.id, 'Жду...', reply_markup=user_markup)
             @bot.message_handler(func=lambda m: True, content_types=['text'])
-            def Accslist(m):
+            def Accslistvkk(m):
                 bot.reply_to(m, 'Принятo: \n' + m.text)
                 vkkiev = open('vkkiev.txt', 'r+')
                 svkkiev = (vkkiev.read())
@@ -2249,7 +2249,7 @@ def main():
                 vkkiev.close()
                 vkkiev_list.clear()
                 svkkiev.clear()
-                m.text.clear()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+                m.text.clear()                                                                                                                              
     if __name__=="__main__":
         bot.polling()
 
