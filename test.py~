@@ -36,7 +36,11 @@ def listener(messages):
             print (vremya)
             spisok = [str(vremya) + '-' + str(m.chat.first_name) + " [" + str(m.chat.id) + "]: " + m.text]
             filename = str(date) + "_" + m.chat.first_name +'.txt'
+<<<<<<< HEAD
+            spisok2 = open("/home/makar/rabotayet/logstest/" + filename, 'a')
+=======
             spisok2 = open("/home/makar/rabotayet/bot_logs/" + filename, 'a')
+>>>>>>> a36422cd30bff4ae346fe3c1221f65776ca60b53
             for index in spisok:
                 spisok2.write(index + '\n')
             spisok2.close
@@ -2182,4 +2186,3 @@ def main():
 
 if __name__=="__main__":
         main()
-
