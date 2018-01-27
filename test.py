@@ -131,7 +131,7 @@ def main():
     def handle_text(message):
         user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
         user_markup.row('На главную')
-        bot.send_message(message.from_user.id, 'Иди ко мне, сладкая...')
+        bot.send_message(message.from_user.id, '...', reply_markup=user_markup)
         kartink = random.choice(os.listdir("/home/makar/rabotayet/Bot_working/kartinki/"))
         kartinka = "/home/makar/rabotayet/Bot_working/kartinki/" + kartink
         print (kartink)
@@ -216,6 +216,7 @@ def main():
         user_markup.row('Получить мамбу МСК') 
         user_markup.row('Получить вк МСК')
         user_markup.row('КНОПКА')
+        user_markup.row('Залить аккаунты')
         glavn = ('Опять мы тут, продолжим же)', 'Что-нибудь еще?', 'Продолжаем.', 'Ну, что еще?','Меня разорили...','Я снова потерял часть себя:(','Желаете еще чего-нибудь?')
         bot.send_message(message.from_user.id, random.choice(glavn), reply_markup=user_markup)
         bot.send_message(message.chat.id, 'Теперь у меня: \n' +'Mamba.ru: ' + mambaresultat + '\nVk.com: ' + vkresultat + '\nMamba.UA: ' + mambauaresult + '\nvk.com(ua): ' + vkuaresultat, reply_markup=user_markup)
@@ -2164,22 +2165,93 @@ def main():
         user_markup.row('Вкинуть вк МСК')
         glavn = ('Что добавляем?')
         bot.send_message(message.from_user.id, glavn, reply_markup=user_markup)
-        bot.send_message(message.chat.id, 'Сейчас у меня: \n' +'  Mamba.ru: ' + mambaresultat + '\n  Vk.com: ' + vkresultat + '\n  Mamba.UA: ' + mambauaresult + '\n  vk.com(ua): ' + vkuaresultat, reply_markup=user_markup)
         @bot.message_handler(func=lambda message: message.text == "Вкинуть вк МСК")
-            def command_text_hi(m):
-                  bot.send_message(m.chat.id, 'Жду...')
-                  def Accslist(m):
-                      accs = message.text
-                      bot.reply_to(m, 'Принято')
-                      vkmsk_list.clear()
-                      vkmsk = open('vk.txt', 'r+')
-                      svkmsk = (vkmsk.read())
-                      vkmsk_list = svkmsk.split('\n')
-                      vkmsk_list_add = vkmsk_list.extend(accs)
-
+        def command_text_hi(m):
+            user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+            user_markup.row('На главную')
+            bot.send_message(m.chat.id, 'Жду...', reply_markup=user_markup)
+            @bot.message_handler(func=lambda m: True, content_types=['text'])
+            def Accslist(m):
+                bot.reply_to(m, 'Принятo: \n' + m.text)
+                vkmsk = open('vk.txt', 'r+')
+                svkmsk = (vkmsk.read())
+                #m.text.split('\n')
+                vkmsk_list = svkmsk.split('\n')
+                vkmsk_list.append(m.text)
+                vkmsk_list.pop (0)
+                print(vkmsk_list)
+                #vkmsk_list_add = vkmsk_list.append(m.text)
+                #print(vkmsk_list_add)
+                vkmsk = open('vk.txt', 'w')
+                for index in vkmsk_list:
+                        vkmsk.write(index + '\n')
+                vkmsk.close
+                vkmsk = open('vk.txt', 'r+')
+                svkmsk = (vkmsk.read())
+                vkmsk_list = svkmsk.split('\n')
+                print (vkmsk_list)
+                vkmsk.close()
+                vkmsk_list.clear()
+                #svkmsk.clear()
+                #m.text.clear()
+        @bot.message_handler(func=lambda message: message.text == "Залить мамбы на Киев")
+        def command_text_hi(m):
+            user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+            user_markup.row('На главную')
+            bot.send_message(m.chat.id, 'Жду...', reply_markup=user_markup)
+            @bot.message_handler(func=lambda m: True, content_types=['text'])
+            def Accslist(m):
+                bot.reply_to(m, 'Принятo: \n' + m.text)
+                uamamba = open('mambaua.txt', 'r+')
+                uaspisok = (uamamba.read())
+                #m.text.split('\n')
+                uaaccount = uaspisok.split('\n')
+                uaaccount.append(m.text)
+                uaaccount.pop (0)
+                print(uaaccount)
+                #vkmsk_list_add = vkmsk_list.append(m.text)
+                #print(vkmsk_list_add)
+                uamamba = open('mambaua.txt', 'w')
+                for index in uaspisok:
+                        uamamba.write(index + '\n')
+                uamamba.close
+                uamamba = open('mambaua.txt', 'r+')
+                uaspisok = (uamamba.read())
+                uaaccount = uaspisok.split('\n')
+                print (uaaccount)
+                uamamba.close()
+                uaspisok.clear()
+                uaaccount.clear()
+                m.text.clear()
+        @bot.message_handler(func=lambda message: message.text == "Залить вк Киев")
+        def command_text_hi(m):
+            user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+            user_markup.row('На главную')
+            bot.send_message(m.chat.id, 'Жду...', reply_markup=user_markup)
+            @bot.message_handler(func=lambda m: True, content_types=['text'])
+            def Accslist(m):
+                bot.reply_to(m, 'Принятo: \n' + m.text)
+                vkkiev = open('vkkiev.txt', 'r+')
+                svkkiev = (vkkiev.read())
+                #m.text.split('\n')
+                vkkiev_list = vkkiev.split('\n')
+                vkkiev_list.append(m.text)
+                vkkiev_list.pop (0)
+                print(vkkiev_list)
+                vkkiev = open('vkkiev.txt', 'w')
+                for index in vkkiev_list:
+                        vkkiev.write(index + '\n')
+                vkkiev.close
+                vkkiev = open('vkkiev.txt', 'r+')
+                svkkiev = (vkkiev.read())
+                vkkiev_list = svkkiev.split('\n')
+                print (vkkiev_list)
+                vkkiev.close()
+                vkkiev_list.clear()
+                svkkiev.clear()
+                m.text.clear()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
     if __name__=="__main__":
         bot.polling()
 
 if __name__=="__main__":
         main()
-
