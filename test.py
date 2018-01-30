@@ -2194,7 +2194,7 @@ def main():
                 else:
                     print ('OK')
                 vkmsk.close()
-                vkmsk = open('vk.txt', 'w')
+                vkmsk = open('vk.txt', 'r+')
                 for index in vkmsk_list:
                       vkmsk.write(index + '\n')
                 vkmsk.close
@@ -2205,6 +2205,7 @@ def main():
                 os.remove('/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name)
                 bot.send_message(m.chat.id, 'ПРИНЯТО', reply_markup=user_markup)
                 vkmsk.close()
+                message.document.file_name = 'Null'
         @bot.message_handler(func=lambda message: message.text == "Залить мамбы на Киев")
         def command_text_priem(m):
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
@@ -2224,14 +2225,14 @@ def main():
                     print(e)
                 #mambaadd = open('LOGPASS.txt', 'r+')
                 mambaaddua = open(message.document.file_name, 'r+')
-                uamamba = open('mambaua.txt', 'r+')
+                uamamba = open('mamba.txt', 'r+')
                 mambaaddsua = (mambaaddua.read())
                 mambaaddaua = mambaaddsua.split('\n')
                 uaspisok = (uamamba.read())
-                uaaccount = s.split('\n')
+                uaaccount = uaspisok.split('\n')
                 print (uaaccount)
                 print (mambaaddaua)
-                print (uaaccount.extend(mambaadda))
+                print (uaaccount.extend(mambaaddaua))
                 uaaccountnew = uaaccount
                 if uaaccountnew[0] == '':
                     del uaaccountnew[0]
@@ -2239,7 +2240,7 @@ def main():
                     print ('OK')
                 uamamba.close()
                 print (uaaccountnew)
-                uamamba = open('mamba.txt', 'w')
+                uamamba = open('mamba.txt', 'r+')
                 for index in uaaccountnew:
                        uamamba.write(index + '\n')
                 uamamba.close
@@ -2251,6 +2252,7 @@ def main():
                 os.remove('/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name)
                 uamamba.close() 
                 bot.send_message(m.chat.id, 'ПРИНЯТО', reply_markup=user_markup)
+                message.document.file_name = 'Null'
         @bot.message_handler(func=lambda message: message.text == "Залить вк Киев")
         def command_text_hi(m):
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
@@ -2281,7 +2283,8 @@ def main():
                 else:
                     print ('OK')
                 vkkiev.close()
-                vkkiev = open('vkkiev.txt', 'w')
+                print (vkkiev_list)
+                vkkiev = open('vkkiev.txt', 'r+')
                 for index in vkkiev_list:
                       vkkiev.write(index + '\n')
                 vkkiev.close
@@ -2292,6 +2295,7 @@ def main():
                 os.remove('/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name)
                 bot.send_message(m.chat.id, 'ПРИНЯТО', reply_markup=user_markup)
                 vkkiev.close()
+                message.document.file_name = 'Null'
         @bot.message_handler(func=lambda message: message.text == "Добавить мамбу МСК")
         def command_text_priem(m):
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
@@ -2326,7 +2330,7 @@ def main():
                     print ('OK')
                 f.close()
                 print (anew)
-                f = open('mamba.txt', 'w')
+                f = open('mamba.txt', 'r+')
                 for index in anew:
                        f.write(index + '\n')
                 f.close
@@ -2338,6 +2342,7 @@ def main():
                 os.remove('/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name)
                 f.close() 
                 bot.send_message(m.chat.id, 'ПРИНЯТО', reply_markup=user_markup)
+                message.document.file_name = 'Null'
     if __name__=="__main__":
         bot.polling()
 
