@@ -2230,29 +2230,38 @@ def main():
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
             user_markup.row('На главную')
             bot.send_message(m.chat.id, 'Жду...', reply_markup=user_markup)
-            @bot.message_handler(func=lambda m: True, content_types=['text'])
-            def Accslistvkk(m):
-                bot.reply_to(m, 'Принятo: \n' + m.text)
+            @bot.message_handler(content_types=['document'])
+            def handle_docs_photo(message):
+                try:
+                    chat_id = message.chat.id
+                    file_info = bot.get_file(message.document.file_id)
+                    downloaded_file = bot.download_file(file_info.file_path)
+                    src='/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name;
+                    with open(src, 'wb') as new_file:
+                        new_file.write(downloaded_file)
+                except Exception as e:
+                    bot.reply_to(message,e )
+                    print(e)
+                vkkievadd = open(message.document.file_name, 'r+')
+                vkkievadds = (vkkievadd.read())
+                vkkievadda = vkkievadds.split('\n')
                 vkkiev = open('vkkiev.txt', 'r+')
                 svkkiev = (vkkiev.read())
-                #m.text.split('\n')
                 vkkiev_list = svkkiev.split('\n')
-                vkkiev_list.append(m.text)
-                #vkkiev_list.pop (0)
-                print(vkkiev_list)
+                print (vkkiev_list)
+                print (vkkiev_list.extend(vkkievadda))
+                vkkiev.close()
                 vkkiev = open('vkkiev.txt', 'w')
                 for index in vkkiev_list:
-                        vkkiev.write(index + '\n')
+                      vkkiev.write(index + '\n')
                 vkkiev.close
                 vkkiev = open('vkkiev.txt', 'r+')
                 svkkiev = (vkkiev.read())
                 vkkiev_list = svkkiev.split('\n')
                 print (vkkiev_list)
+                os.remove('/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name)
+                bot.send_message(m.chat.id, 'ПРИНЯТО', reply_markup=user_markup)
                 vkkiev.close()
-                vkkiev_list.clear()
-                m.text = None
-                #svkkiev.clear()
-                #m.text.clear()  
         @bot.message_handler(func=lambda message: message.text == "Добавить мамбу МСК")
         def command_text_priem(m):
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
