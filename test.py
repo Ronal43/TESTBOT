@@ -2260,33 +2260,18 @@ def main():
             bot.send_message(m.chat.id, 'Жду...', reply_markup=user_markup)
             @bot.message_handler(content_types=['document'])
             def handle_docs_photo(message):
+    
                 try:
                     chat_id = message.chat.id
+       
                     file_info = bot.get_file(message.document.file_id)
                     downloaded_file = bot.download_file(file_info.file_path)
-                    src="/home/makar/rabotayet/bot_logs/" + mesage.document.file_name;
+      
+                    src='/mnt/files/tmp/document/'+message.document.file_name;
                     with open(src, 'wb') as new_file:
-                    new_file.write(downloaded_file)
+                        new_file.write(downloaded_file)
+       
                     bot.reply_to(message,"принято" )
-                    addmamba = open(message.document.file_name, 'r+')
-                    f = open('mamba.txt', 'r+')
-                    s = (f.read())
-                    a = s.split('\n')
-                    print (a)
-                    f.close()
-                    mamba = a.pop (0)
-                    del a[0]
-                    print (mamba)
-                    print (a)
-                    f = open('mamba.txt', 'w')
-                    for index in a:
-                          f.write(index + '\n')
-                    f.close
-                    f = open('mamba.txt', 'r+')
-                    s = (f.read())
-                    a = s.split('\n')
-                    print (a)
-                    f.close()
                 except Exception as e:
                     bot.reply_to(message,e )
     if __name__=="__main__":
