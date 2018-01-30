@@ -2252,8 +2252,8 @@ def main():
                 print (vkkiev_list.extend(vkkievadda))
                 if vkkiev_list[0] == '':
                     del vkkiev_list[0]
-                else 
-                    print(ok)
+                else:
+                    print ('OK')
                 vkkiev.close()
                 vkkiev = open('vkkiev.txt', 'w')
                 for index in vkkiev_list:
