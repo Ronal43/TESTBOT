@@ -2254,7 +2254,7 @@ def main():
                 #svkkiev.clear()
                 #m.text.clear()  
         @bot.message_handler(func=lambda message: message.text == "Добавить мамбу МСК")
-        def command_text_hi(m):
+        def command_text_priem(m):
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
             user_markup.row('На главную')
             bot.send_message(m.chat.id, 'Жду...', reply_markup=user_markup)
@@ -2264,32 +2264,37 @@ def main():
                     chat_id = message.chat.id
                     file_info = bot.get_file(message.document.file_id)
                     downloaded_file = bot.download_file(file_info.file_path)
-                    #src="/home/makar/rabotayet/test/TESTBOT/" + message.document.file_name;
-                    with open("/home/makar/rabotayet/test/TESTBOT/" + message.document.file_name, 'w+') as new_file:
-                        new_file.write(str(downloaded_file))
-                    bot.reply_to(message,"принято" )
-                    addmamba = open(message.document.file_name, 'r+')
-                    f = open('mamba.txt', 'r+')
-                    s = (f.read())
-                    addmambaspis = (addmamba.read())
-                    a = s.split('\n')
-                    addmambalist = addmambaspis.split('\n')
-                    a1 = a.extend(addmambalist)
-                    print (a1)
-                    f.close()
-                    print (a1)
-                    f = open('mamba.txt', 'w')
-                    for index in a1:
-                          f.write(index + '\n')
-                    f.close
-                    f = open('mamba.txt', 'r+')
-                    s = (f.read())
-                    a = s.split('\n')
-                    print (a)
-                    f.close()
+                    src='/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name;
+                    with open(src, 'wb') as new_file:
+                        new_file.write(downloaded_file)
                 except Exception as e:
                     bot.reply_to(message,e )
                     print(e)
+                #mambaadd = open('LOGPASS.txt', 'r+')
+                mambaadd = open(message.document.file_name, 'r+')
+                f = open('mamba.txt', 'r+')
+                mambaadds = (mambaadd.read())
+                mambaadda = mambaadds.split('\n')
+                s = (f.read())
+                a = s.split('\n')
+                print (a)
+                print (mambaadda)
+                print (a.extend(mambaadda))
+                anew = a
+                f.close()
+                print (anew)
+                f = open('mamba.txt', 'w')
+                for index in anew:
+                       f.write(index + '\n')
+                f.close
+                a.clear()
+                f = open('mamba.txt', 'r+')
+                s = (f.read())
+                a = s.split('\n')
+                print (a)
+                os.remove('/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name)
+                f.close() 
+                bot.send_message(m.chat.id, 'ПРИНЯТО', reply_markup=user_markup)
     if __name__=="__main__":
         bot.polling()
 
