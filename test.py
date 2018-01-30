@@ -2250,6 +2250,10 @@ def main():
                 vkkiev_list = svkkiev.split('\n')
                 print (vkkiev_list)
                 print (vkkiev_list.extend(vkkievadda))
+                if vkkiev_list[0] == '':
+                    del vkkiev_list[0]
+                else:
+                    print ('OK')
                 vkkiev.close()
                 vkkiev = open('vkkiev.txt', 'w')
                 for index in vkkiev_list:
