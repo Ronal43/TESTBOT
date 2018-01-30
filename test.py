@@ -540,7 +540,6 @@ def main():
                     print (uaaccount)
                     uamamba.close()
         elif mambauaresult == '0' :
-            user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
             user_markup.row('На главную')   
             bot.send_message(message.chat.id, "Не осталось совсем, реально, ждите, пока закинут. \nАкков: " + mambaresult, reply_markup=user_markup)    
         else :
@@ -2177,7 +2176,7 @@ def main():
                 vkmsk = open('vk.txt', 'r+')
                 svkmsk = (vkmsk.read())
                 #m.text.split('\n')
-                vkmsk_list = svkmsk.split('\n ')
+                vkmsk_list = svkmsk.split('\n')
                 vkmsk_list.append(m.text)
                 vkmsk_list.pop (0)
                 print(vkmsk_list)
@@ -2206,26 +2205,25 @@ def main():
                 bot.reply_to(m, 'Принятo: \n' + m.text)
                 uamamba = open('mambaua.txt', 'r+')
                 uaspisok = (uamamba.read())
-                lst = m.text.split()
-                uaaccount = uaspisok.split()
-                uaaccount.extend(lst)
-                #uaaccount.split('\n')
+                m.text.split('\n')
+                uaaccount = uaspisok.split('\n')
+                uaaccount.append(m.text)
                 uaaccount.pop (0)
                 print(uaaccount)
                 #vkmsk_list_add = vkmsk_list.append(m.text)
                 #print(vkmsk_list_add)
-                uamamba = open('mambaua.txt', 'r+')
+                uamamba = open('mambaua.txt', 'w')
                 for index in uaspisok:
                         uamamba.write(index + '\n')
                 uamamba.close
                 uamamba = open('mambaua.txt', 'r+')
                 uaspisok = (uamamba.read())
-                uaaccount = uaspisok.split()
+                uaaccount = uaspisok.split('\n')
                 print (uaaccount)
                 uamamba.close()
-                #uaspisok.clear()
+                uaspisok.clear()
                 m.text = None
-                uaaccount.clear()
+                #uaaccount.clear()
                # m.text.clear()
         @bot.message_handler(func=lambda message: message.text == "Залить вк Киев")
         def command_text_hi(m):
@@ -2238,11 +2236,11 @@ def main():
                 vkkiev = open('vkkiev.txt', 'r+')
                 svkkiev = (vkkiev.read())
                 #m.text.split('\n')
-                vkkiev_list = svkkiev.split('\n ')
+                vkkiev_list = svkkiev.split('\n')
                 vkkiev_list.append(m.text)
                 #vkkiev_list.pop (0)
                 print(vkkiev_list)
-                vkkiev = open('vkkiev.txt', 'r+')
+                vkkiev = open('vkkiev.txt', 'w')
                 for index in vkkiev_list:
                         vkkiev.write(index + '\n')
                 vkkiev.close
@@ -2260,31 +2258,37 @@ def main():
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
             user_markup.row('На главную')
             bot.send_message(m.chat.id, 'Жду...', reply_markup=user_markup)
-            @bot.message_handler(func=lambda m: True, content_types=['text'])
-            def Accslistmamka(m):
-                bot.reply_to(m, 'Принятo: \n' + m.text)
-                f = open('mamba.txt', 'r+')
-                s = (f.read())
-                #m.text.split('\n')
-                a = s.split('\n ')
-                a.append(m.text)
-                a.pop (0)
-                print(a)
-                #vkmsk_list_add = vkmsk_list.append(m.text)
-                #print(vkmsk_list_add)
-                f = open('mamba.txt', 'w')
-                for index in a:
-                        f.write(index + '\n')
-                f.close
-                f = open('mamba.txt', 'r+')
-                s = (f.read())
-                a = s.split('\n')
-                print (a)
-                f.close()
-                s.clear()
-                m.text = None
-                #uaaccount.clear()
-                #m.text.clear()                
+            @bot.message_handler(content_types=['document'])
+            def handle_docs_photo(message):
+                try:
+                    chat_id = message.chat.id
+                    file_info = bot.get_file(message.document.file_id)
+                    downloaded_file = bot.download_file(file_info.file_path)
+                    src="/home/makar/rabotayet/bot_logs/" + mesage.document.file_name;
+                    with open(src, 'wb') as new_file:
+                    new_file.write(downloaded_file)
+                    bot.reply_to(message,"принято" )
+                    addmamba = open(message.document.file_name, 'r+')
+                    f = open('mamba.txt', 'r+')
+                    s = (f.read())
+                    a = s.split('\n')
+                    print (a)
+                    f.close()
+                    mamba = a.pop (0)
+                    del a[0]
+                    print (mamba)
+                    print (a)
+                    f = open('mamba.txt', 'w')
+                    for index in a:
+                          f.write(index + '\n')
+                    f.close
+                    f = open('mamba.txt', 'r+')
+                    s = (f.read())
+                    a = s.split('\n')
+                    print (a)
+                    f.close()
+                except Exception as e:
+                    bot.reply_to(message,e )
     if __name__=="__main__":
         bot.polling()
 
