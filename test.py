@@ -221,7 +221,7 @@ def main():
         bot.send_message(message.from_user.id, random.choice(glavn), reply_markup=user_markup)
         bot.send_message(message.chat.id, 'Теперь у меня: \n' +'Mamba.ru: ' + mambaresultat + '\nVk.com: ' + vkresultat + '\nMamba.UA: ' + mambauaresult + '\nvk.com(ua): ' + vkuaresultat, reply_markup=user_markup)
 
-	
+####################################################################################################МАМБАКИЕВ#################################################################################################
     @bot.message_handler(func=lambda message: message.text == "Нужна мамба на Киев")
     def handle_text(message):
         #orig_mamba_ua = open('mambaorigua.txt', 'r+')
@@ -707,8 +707,7 @@ def main():
                     uaaccount = uaspisok.split('\n')
                     print (uaaccount)
                     uamamba.close()
-	
-	
+######################################################################################################ВККИЕВ##################################################################################################
     @bot.message_handler(func=lambda message: message.text == "Получить вк Киев") 
     def handle_text(message):
         #orig_vkua = open('vkorigua.txt', 'r+')
@@ -1176,7 +1175,7 @@ def main():
                   vkkiev_list = svkkiev.split('\n')
                   print (vkkiev_list)
                   vkkiev.close()
-
+#####################################################################################################МАМБЫ МСК################################################################################################
     @bot.message_handler(func=lambda message: message.text == "Получить мамбу МСК")
     def handle_text(message):
         #orig_mamba = open('mambaorig.txt', 'r+')
@@ -1664,8 +1663,7 @@ def main():
                     A = s.split('\n')
                     print (a)
                     f.close()
-
-
+######################################################################################################ВКМСК###################################################################################################
     @bot.message_handler(func=lambda message: message.text == "Получить вк МСК") 
     def handle_text(message):
         #orig_vk = open('vkorig.txt', 'r+')
@@ -2132,6 +2130,7 @@ def main():
                   vkmsk_list = svkmsk.split('\n')
                   print (vkmsk_list)
                   vkmsk.close()
+#################################################################################################ЗАЛИВКА АККОВ################################################################################################
     @bot.message_handler(func=lambda message: message.text == "Залить аккаунты")
     def handle_text(message): 
         user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
@@ -2170,61 +2169,88 @@ def main():
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
             user_markup.row('На главную')
             bot.send_message(m.chat.id, 'Жду...', reply_markup=user_markup)
-            @bot.message_handler(func=lambda m: True, content_types=['text'])
-            def Accslistvkmsk(m):
-                bot.reply_to(m, 'Принятo: \n' + m.text)
+            @bot.message_handler(content_types=['document'])
+            def handle_docs_photo(message):
+                try:
+                    chat_id = message.chat.id
+                    file_info = bot.get_file(message.document.file_id)
+                    downloaded_file = bot.download_file(file_info.file_path)
+                    src='/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name;
+                    with open(src, 'wb') as new_file:
+                        new_file.write(downloaded_file)
+                except Exception as e:
+                    bot.reply_to(message,e )
+                    print(e)
+                vkmskadd = open(message.document.file_name, 'r+')
+                vkmskadds = (vkmskadd.read())
+                vkmskadda = vkmskadds.split('\n')
                 vkmsk = open('vk.txt', 'r+')
                 svkmsk = (vkmsk.read())
-                #m.text.split('\n')
                 vkmsk_list = svkmsk.split('\n')
-                vkmsk_list.append(m.text)
-                vkmsk_list.pop (0)
-                print(vkmsk_list)
-                #vkmsk_list_add = vkmsk_list.append(m.text)
-                #print(vkmsk_list_add)
+                print (vkmsk_list)
+                print (vkmsk_list.extend(vkmskadda))
+                if vkmsk_list[0] == '':
+                    del vkmsk_list[0]
+                else:
+                    print ('OK')
+                vkmsk.close()
                 vkmsk = open('vk.txt', 'w')
                 for index in vkmsk_list:
-                        vkmsk.write(index + '\n')
+                      vkmsk.write(index + '\n')
                 vkmsk.close
                 vkmsk = open('vk.txt', 'r+')
                 svkmsk = (vkmsk.read())
                 vkmsk_list = svkmsk.split('\n')
                 print (vkmsk_list)
+                os.remove('/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name)
+                bot.send_message(m.chat.id, 'ПРИНЯТО', reply_markup=user_markup)
                 vkmsk.close()
-                vkmsk_list.clear()
-                m.text = None
-                #svkmsk.clear()
-                #m.text.clear()
         @bot.message_handler(func=lambda message: message.text == "Залить мамбы на Киев")
-        def command_text_hi(m):
+        def command_text_priem(m):
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
             user_markup.row('На главную')
             bot.send_message(m.chat.id, 'Жду...', reply_markup=user_markup)
-            @bot.message_handler(func=lambda m: True, content_types=['text'])
-            def Accslistmamka(m):
-                bot.reply_to(m, 'Принятo: \n' + m.text)
+            @bot.message_handler(content_types=['document'])
+            def handle_docs_photo(message):
+                try:
+                    chat_id = message.chat.id
+                    file_info = bot.get_file(message.document.file_id)
+                    downloaded_file = bot.download_file(file_info.file_path)
+                    src='/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name;
+                    with open(src, 'wb') as new_file:
+                        new_file.write(downloaded_file)
+                except Exception as e:
+                    bot.reply_to(message,e )
+                    print(e)
+                #mambaadd = open('LOGPASS.txt', 'r+')
+                mambaaddua = open(message.document.file_name, 'r+')
                 uamamba = open('mambaua.txt', 'r+')
+                mambaaddsua = (mambaaddua.read())
+                mambaaddaua = mambaaddsua.split('\n')
                 uaspisok = (uamamba.read())
-                m.text.split('\n')
-                uaaccount = uaspisok.split('\n')
-                uaaccount.append(m.text)
-                uaaccount.pop (0)
-                print(uaaccount)
-                #vkmsk_list_add = vkmsk_list.append(m.text)
-                #print(vkmsk_list_add)
-                uamamba = open('mambaua.txt', 'w')
-                for index in uaspisok:
-                        uamamba.write(index + '\n')
-                uamamba.close
-                uamamba = open('mambaua.txt', 'r+')
-                uaspisok = (uamamba.read())
-                uaaccount = uaspisok.split('\n')
+                uaaccount = s.split('\n')
                 print (uaaccount)
+                print (mambaaddaua)
+                print (uaaccount.extend(mambaadda))
+                uaaccountnew = uaaccount
+                if uaaccountnew[0] == '':
+                    del uaaccountnew[0]
+                else:
+                    print ('OK')
                 uamamba.close()
-                uaspisok.clear()
-                m.text = None
-                #uaaccount.clear()
-               # m.text.clear()
+                print (uaaccountnew)
+                uamamba = open('mamba.txt', 'w')
+                for index in uaaccountnew:
+                       uamamba.write(index + '\n')
+                uamamba.close
+                uaaccount.clear()
+                uamamba = open('mamba.txt', 'r+')
+                s = (uamamba.read())
+                uaaccount = s.split('\n')
+                print (uaaccountnew)
+                os.remove('/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name)
+                uamamba.close() 
+                bot.send_message(m.chat.id, 'ПРИНЯТО', reply_markup=user_markup)
         @bot.message_handler(func=lambda message: message.text == "Залить вк Киев")
         def command_text_hi(m):
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
@@ -2294,6 +2320,10 @@ def main():
                 print (mambaadda)
                 print (a.extend(mambaadda))
                 anew = a
+                if anew[0] == '':
+                    del anew[0]
+                else:
+                    print ('OK')
                 f.close()
                 print (anew)
                 f = open('mamba.txt', 'w')
