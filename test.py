@@ -2176,8 +2176,8 @@ def main():
                     file_info = bot.get_file(message.document.file_id)
                     downloaded_file = bot.download_file(file_info.file_path)
                     src='/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name;
-                    with open(src, 'wb') as new_file:
-                        new_file.write(downloaded_file)
+                    with open(src, 'wb') as vkmskaaddf:
+                        vkmskaaddf.write(downloaded_file)
                 except Exception as e:
                     bot.reply_to(message,e )
                     print(e)
@@ -2194,7 +2194,7 @@ def main():
                 else:
                     print ('OK')
                 vkmsk.close()
-                vkmsk = open('vk.txt', 'r+')
+                vkmsk = open('vk.txt', 'w')
                 for index in vkmsk_list:
                       vkmsk.write(index + '\n')
                 vkmsk.close
@@ -2205,7 +2205,6 @@ def main():
                 os.remove('/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name)
                 bot.send_message(m.chat.id, 'ПРИНЯТО', reply_markup=user_markup)
                 vkmsk.close()
-                message.document.file_name = 'Null'
         @bot.message_handler(func=lambda message: message.text == "Залить мамбы на Киев")
         def command_text_priem(m):
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
@@ -2218,21 +2217,21 @@ def main():
                     file_info = bot.get_file(message.document.file_id)
                     downloaded_file = bot.download_file(file_info.file_path)
                     src='/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name;
-                    with open(src, 'wb') as new_file:
-                        new_file.write(downloaded_file)
+                    with open(src, 'wb') as kievmambaaddf:
+                        kievmambaaddf.write(downloaded_file)
                 except Exception as e:
                     bot.reply_to(message,e )
                     print(e)
                 #mambaadd = open('LOGPASS.txt', 'r+')
                 mambaaddua = open(message.document.file_name, 'r+')
-                uamamba = open('mamba.txt', 'r+')
+                uamamba = open('mambaua.txt', 'r+')
                 mambaaddsua = (mambaaddua.read())
                 mambaaddaua = mambaaddsua.split('\n')
                 uaspisok = (uamamba.read())
-                uaaccount = uaspisok.split('\n')
+                uaaccount = s.split('\n')
                 print (uaaccount)
                 print (mambaaddaua)
-                print (uaaccount.extend(mambaaddaua))
+                print (uaaccount.extend(mambaadda))
                 uaaccountnew = uaaccount
                 if uaaccountnew[0] == '':
                     del uaaccountnew[0]
@@ -2240,7 +2239,7 @@ def main():
                     print ('OK')
                 uamamba.close()
                 print (uaaccountnew)
-                uamamba = open('mamba.txt', 'r+')
+                uamamba = open('mamba.txt', 'w')
                 for index in uaaccountnew:
                        uamamba.write(index + '\n')
                 uamamba.close
@@ -2252,7 +2251,6 @@ def main():
                 os.remove('/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name)
                 uamamba.close() 
                 bot.send_message(m.chat.id, 'ПРИНЯТО', reply_markup=user_markup)
-                message.document.file_name = 'Null'
         @bot.message_handler(func=lambda message: message.text == "Залить вк Киев")
         def command_text_hi(m):
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
@@ -2265,8 +2263,8 @@ def main():
                     file_info = bot.get_file(message.document.file_id)
                     downloaded_file = bot.download_file(file_info.file_path)
                     src='/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name;
-                    with open(src, 'wb') as new_file:
-                        new_file.write(downloaded_file)
+                    with open(src, 'wb') as vkkievaddf:
+                        vkkievaddf.write(downloaded_file)
                 except Exception as e:
                     bot.reply_to(message,e )
                     print(e)
@@ -2283,8 +2281,7 @@ def main():
                 else:
                     print ('OK')
                 vkkiev.close()
-                print (vkkiev_list)
-                vkkiev = open('vkkiev.txt', 'r+')
+                vkkiev = open('vkkiev.txt', 'w')
                 for index in vkkiev_list:
                       vkkiev.write(index + '\n')
                 vkkiev.close
@@ -2295,7 +2292,6 @@ def main():
                 os.remove('/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name)
                 bot.send_message(m.chat.id, 'ПРИНЯТО', reply_markup=user_markup)
                 vkkiev.close()
-                message.document.file_name = 'Null'
         @bot.message_handler(func=lambda message: message.text == "Добавить мамбу МСК")
         def command_text_priem(m):
             user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
@@ -2308,8 +2304,8 @@ def main():
                     file_info = bot.get_file(message.document.file_id)
                     downloaded_file = bot.download_file(file_info.file_path)
                     src='/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name;
-                    with open(src, 'wb') as new_file:
-                        new_file.write(downloaded_file)
+                    with open(src, 'wb') as mambaaddf:
+                        mambaaddf.write(downloaded_file)
                 except Exception as e:
                     bot.reply_to(message,e )
                     print(e)
@@ -2330,7 +2326,7 @@ def main():
                     print ('OK')
                 f.close()
                 print (anew)
-                f = open('mamba.txt', 'r+')
+                f = open('mamba.txt', 'w')
                 for index in anew:
                        f.write(index + '\n')
                 f.close
@@ -2342,7 +2338,6 @@ def main():
                 os.remove('/home/makar/rabotayet/test/TESTBOT/'+message.document.file_name)
                 f.close() 
                 bot.send_message(m.chat.id, 'ПРИНЯТО', reply_markup=user_markup)
-                message.document.file_name = 'Null'
     if __name__=="__main__":
         bot.polling()
 
